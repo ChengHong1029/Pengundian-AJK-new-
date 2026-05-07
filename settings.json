@@ -1,0 +1,9 @@
+{"php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+    "workbench.iconTheme": "vscode-icons",
+    "php.debug.executablePath": "C:\\xampp\\php\\php.exe",
+    "php.executables": {
+        "v8.x": "C:\\xampp\\php\\php.exe"
+    },
+    "jdk.telemetry.enabled": true,
+    "redhat.telemetry.enabled": true
+}

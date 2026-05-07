@@ -1,0 +1,265 @@
+/* =========================
+   GLOBAL
+========================= */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg, #f7f3ef, #efe4dc);
+}
+
+/* =========================
+   PAGE
+========================= */
+.jawatan-page{
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 30px 20px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.jawatan-container{
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   HEADER
+========================= */
+.page-header{
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.page-header h2{
+
+    font-size: 36px;
+
+    color: #2c3e50;
+
+    margin-bottom: 8px;
+}
+
+.page-header p{
+
+    color: #777;
+
+    font-size: 15px;
+}
+
+/* =========================
+   FORM
+========================= */
+.form-box{
+
+    background: #fafafa;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #eee;
+}
+
+.form-box h3{
+
+    margin-bottom: 15px;
+
+    color: #2c3e50;
+}
+
+.input-group{
+
+    margin-bottom: 15px;
+}
+
+.input-group label{
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+    color: #444;
+}
+
+.input-group input{
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 2px solid #ddd;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.input-group input:focus{
+
+    border-color: #D8C4B8;
+
+    box-shadow: 0 0 8px rgba(216,196,184,0.5);
+}
+
+.submit-btn{
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #D8C4B8;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.submit-btn:hover{
+
+    background: #b89782;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   TABLE
+========================= */
+.table-box h3{
+
+    margin-bottom: 15px;
+
+    color: #2c3e50;
+}
+
+.table-wrapper{
+
+    overflow-x: auto;
+}
+
+.jawatan-table{
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.jawatan-table th{
+
+    background: #D8C4B8;
+
+    color: white;
+
+    padding: 14px;
+}
+
+.jawatan-table td{
+
+    padding: 14px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #eee;
+}
+
+.jawatan-table tr:hover{
+
+    background: #faf7f5;
+}
+
+/* =========================
+   ACTION BUTTON
+========================= */
+.action{
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.edit-btn,
+.delete-btn{
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.edit-btn{
+
+    background: #3498db;
+}
+
+.edit-btn:hover{
+
+    background: #2980b9;
+}
+
+.delete-btn{
+
+    background: #e74c3c;
+}
+
+.delete-btn:hover{
+
+    background: #c0392b;
+}
+
+/* =========================
+   EMPTY
+========================= */
+.empty{
+
+    text-align: center;
+
+    padding: 20px;
+
+    color: #777;
+}

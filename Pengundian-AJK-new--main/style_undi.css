@@ -1,0 +1,250 @@
+/* =========================
+   GLOBAL
+========================= */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg, #f7f3ef, #efe4dc);
+}
+
+/* =========================
+   PAGE
+========================= */
+.vote-page{
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 30px 20px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.vote-container{
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   HEADER
+========================= */
+.vote-header{
+
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.vote-header h2{
+
+    font-size: 36px;
+
+    color: #2c3e50;
+
+    margin-bottom: 10px;
+}
+
+.vote-header p{
+
+    font-size: 18px;
+
+    color: #777;
+}
+
+/* =========================
+   GRID
+========================= */
+.candidate-grid{
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 25px;
+}
+
+/* =========================
+   CARD
+========================= */
+.candidate-card{
+
+    background: #fafafa;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border: 2px solid #eee;
+
+    transition: 0.3s;
+}
+
+.candidate-card:hover{
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   IMAGE
+========================= */
+.candidate-img{
+
+    width: 140px;
+
+    height: 170px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    border: 4px solid #D8C4B8;
+
+    margin-bottom: 15px;
+}
+
+/* =========================
+   NAME
+========================= */
+.candidate-name{
+
+    font-size: 22px;
+
+    color: #2c3e50;
+
+    margin-bottom: 20px;
+}
+
+/* =========================
+   JAWATAN
+========================= */
+.jawatan-list{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    text-align: left;
+}
+
+.jawatan-option{
+
+    display: flex;
+
+    align-items: center;
+
+    background: white;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ddd;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.jawatan-option:hover{
+
+    background: #f5ece6;
+}
+
+.jawatan-option input{
+
+    margin-right: 10px;
+
+    transform: scale(1.2);
+
+    accent-color: #D8C4B8;
+}
+
+.jawatan-option span{
+
+    font-weight: 500;
+
+    color: #444;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.submit-section{
+
+    text-align: center;
+
+    margin-top: 40px;
+}
+
+.submit-btn{
+
+    padding: 15px 40px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #D8C4B8;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.submit-btn:hover{
+
+    background: #b89782;
+
+    transform: translateY(-3px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media screen and (max-width: 768px){
+
+    .vote-container{
+
+        padding: 25px 15px;
+    }
+
+    .vote-header h2{
+
+        font-size: 28px;
+    }
+
+    .candidate-img{
+
+        width: 120px;
+        height: 150px;
+    }
+}

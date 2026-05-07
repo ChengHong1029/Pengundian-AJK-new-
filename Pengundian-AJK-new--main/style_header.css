@@ -1,0 +1,87 @@
+/* =========================
+   NAVBAR
+========================= */
+.navbar{
+    width: 100%;
+
+    padding: 15px 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(255,255,255,0.18);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Logo */
+.logo{
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Navigation */
+.nav-links{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Links */
+.nav-links a{
+    text-decoration: none;
+
+    color: #2c3e50;
+
+    padding: 8px 15px;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Hover */
+.nav-links a:hover{
+    background: rgba(255,255,255,0.35);
+
+    color: #2563eb;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media screen and (max-width: 768px){
+
+    .navbar{
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .logo{
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .nav-links{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}

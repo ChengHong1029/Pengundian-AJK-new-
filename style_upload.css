@@ -1,0 +1,116 @@
+/* =========================
+   GLOBAL
+========================= */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: #e2e8f0;
+    overflow: hidden; /* ❗你说不要滑动 */
+}
+
+/* =========================
+   PAGE CENTER
+========================= */
+.upload-page{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* =========================
+   GLASS CONTAINER
+========================= */
+.upload-container{
+    width: 100%;
+    max-width: 520px;
+
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    padding: 35px;
+    border-radius: 20px;
+
+    box-shadow: 0 0 35px rgba(99,102,241,0.25);
+}
+
+/* =========================
+   TITLE
+========================= */
+.upload-container h3{
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 25px;
+
+    color: #60a5fa;
+    text-shadow: 0 0 12px rgba(96,165,250,0.6);
+}
+
+/* =========================
+   INPUT AREA
+========================= */
+.input-box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+label{
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+/* FILE INPUT */
+input[type="file"]{
+    padding: 12px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(255,255,255,0.05);
+
+    color: #e2e8f0;
+
+    outline: none;
+}
+
+/* =========================
+   BUTTON
+========================= */
+button{
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+
+    color: white;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(139,92,246,0.6);
+}

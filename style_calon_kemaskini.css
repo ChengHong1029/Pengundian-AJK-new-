@@ -1,0 +1,255 @@
+/* =========================
+   GLOBAL
+========================= */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    /* CYBER NEON BACKGROUND */
+    background: radial-gradient(circle at top, #0b1020, #050814 60%, #02030a);
+    color: #e5e7eb;
+}
+
+/* =========================
+   PAGE
+========================= */
+.update-page{
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.update-container{
+
+    width: 100%;
+
+    max-width: 500px;
+
+    background: rgba(255,255,255,0.06);
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(99,102,241,0.25);
+
+    box-shadow:
+        0 0 25px rgba(99,102,241,0.25),
+        0 0 60px rgba(0,255,255,0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+/* =========================
+   HEADER
+========================= */
+.update-header{
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.update-header h2{
+
+    font-size: 32px;
+
+    color: #a5b4fc;
+
+    margin-bottom: 8px;
+
+    text-shadow: 0 0 12px rgba(99,102,241,0.6);
+}
+
+.update-header p{
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+/* =========================
+   INPUT
+========================= */
+.input-group{
+
+    margin-bottom: 20px;
+}
+
+.input-group label{
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+    color: #c7d2fe;
+}
+
+.input-group input{
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid rgba(99,102,241,0.3);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+
+    background: rgba(255,255,255,0.05);
+
+    color: #e5e7eb;
+}
+
+.input-group input:focus{
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 12px rgba(99,102,241,0.5),
+        0 0 25px rgba(0,255,255,0.15);
+}
+
+/* =========================
+   IMAGE
+========================= */
+.image-section{
+
+    margin-bottom: 25px;
+}
+
+.image-section label{
+
+    font-weight: 600;
+
+    color: #c7d2fe;
+
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+.image-box{
+
+    text-align: center;
+
+    padding: 15px;
+
+    background: rgba(255,255,255,0.05);
+
+    border-radius: 15px;
+
+    border: 1px solid rgba(99,102,241,0.2);
+
+    box-shadow: inset 0 0 20px rgba(99,102,241,0.08);
+}
+
+.calon-img{
+
+    width: 120px;
+
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    border: 2px solid #6366f1;
+
+    box-shadow:
+        0 0 15px rgba(99,102,241,0.4),
+        0 0 30px rgba(0,255,255,0.1);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.button-group{
+
+    display: flex;
+
+    gap: 10px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+}
+
+.update-btn{
+
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow: 0 0 15px rgba(99,102,241,0.4);
+}
+
+.update-btn:hover{
+
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(99,102,241,0.6);
+}
+
+.cancel-btn{
+
+    padding: 12px 25px;
+
+    border-radius: 10px;
+
+    background: rgba(255,0,100,0.15);
+
+    color: #f87171;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    border: 1px solid rgba(248,113,113,0.4);
+
+    transition: 0.3s;
+}
+
+.cancel-btn:hover{
+
+    background: rgba(255,0,100,0.25);
+
+    transform: translateY(-2px);
+}

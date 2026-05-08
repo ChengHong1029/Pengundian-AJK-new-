@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include('header.php');
 include('connection.php');
 include('kawalan-admin.php');
@@ -16,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_jawatan = mysqli_real_escape_string($condb, $_POST['id_jawatan']);
     $nama_jawatan = mysqli_real_escape_string($condb, $_POST['nama_jawatan']);
 
-    // Semak jika ID baru sudah wujud (kecuali jika sama dengan ID asal)
     if ($id_jawatan != $id) {
 
         $check_sql = "SELECT idjawatan FROM jawatan WHERE idjawatan = '$id_jawatan'";
@@ -24,11 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (mysqli_num_rows($check_result) > 0) {
 
-            echo "<script>alert('Ralat: ID jawatan \"$id_jawatan\" sudah wujud dalam sistem!');</script>";
+            echo "<script>alert('Ralat: ID jawatan sudah wujud!');</script>";
 
         } else {
 
-            // Kemaskini kedua-dua ID dan nama jika ID baru unik
             $sql = "UPDATE jawatan 
                     SET idjawatan = '$id_jawatan', 
                         nama_jawatan = '$nama_jawatan' 
@@ -37,20 +36,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (mysqli_query($condb, $sql)) {
 
                 echo "<script>
-                        alert('Jawatan berjaya dikemaskini!');
-                        window.location.href='jawatan-daftar.php';
-                      </script>";
+                    alert('Jawatan berjaya dikemaskini!');
+                    window.location.href='jawatan-daftar.php';
+                </script>";
 
             } else {
 
                 echo "<script>alert('Ralat: " . mysqli_error($condb) . "');</script>";
-
             }
         }
 
     } else {
 
-        // Jika ID tidak berubah, hanya kemaskini nama jawatan
         $sql = "UPDATE jawatan 
                 SET nama_jawatan = '$nama_jawatan' 
                 WHERE idjawatan = '$id'";
@@ -58,56 +55,79 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_query($condb, $sql)) {
 
             echo "<script>
-                    alert('Jawatan berjaya dikemaskini!');
-                    window.location.href='jawatan-daftar.php';
-                  </script>";
+                alert('Jawatan berjaya dikemaskini!');
+                window.location.href='jawatan-daftar.php';
+            </script>";
 
         } else {
 
             echo "<script>alert('Ralat: " . mysqli_error($condb) . "');</script>";
-
         }
     }
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Kemaskini Jawatan</title>
-</head>
-<body>
+<link rel="stylesheet" href="style_jawatan_kemaskini.css">
 
-<h2>KEMASKINI JAWATAN</h2>
+<div class="edit-page">
 
-<form method="POST" action="">
-<table border="1">
+    <div class="edit-container">
 
-    <tr>
-        <td>ID Jawatan:</td>
-        <td>
-            <input type="text" name="id_jawatan"
-                   value="<?php echo $jawatan['idjawatan']; ?>" required>
-        </td>
-    </tr>
+        <!-- HEADER -->
+        <div class="edit-header">
 
-    <tr>
-        <td>Nama Jawatan:</td>
-        <td>
-            <input type="text" name="nama_jawatan"
-                   value="<?php echo $jawatan['nama_jawatan']; ?>" required>
-        </td>
-    </tr>
+            <h2>Kemaskini Jawatan</h2>
 
-    <tr>
-        <td colspan="2" align="center">
-            <button type="submit">Kemaskini</button>
-            <a href="jawatan-daftar.php">Batal</a>
-        </td>
-    </tr>
+            <p>Edit maklumat jawatan</p>
 
-</table>
-</form>
+        </div>
 
-</body>
-</html>
+        <!-- FORM -->
+        <form method="POST" action="">
+
+            <!-- ID -->
+            <div class="input-group">
+
+                <label>ID Jawatan</label>
+
+                <input 
+                    type="text"
+                    name="id_jawatan"
+                    value="<?= $jawatan['idjawatan']; ?>"
+                    required
+                >
+
+            </div>
+
+            <!-- NAMA -->
+            <div class="input-group">
+
+                <label>Nama Jawatan</label>
+
+                <input 
+                    type="text"
+                    name="nama_jawatan"
+                    value="<?= $jawatan['nama_jawatan']; ?>"
+                    required
+                >
+
+            </div>
+
+            <!-- BUTTON -->
+            <div class="button-group">
+
+                <button type="submit" class="save-btn">
+                    Kemaskini
+                </button>
+
+                <a href="jawatan-daftar.php" class="cancel-btn">
+                    Batal
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

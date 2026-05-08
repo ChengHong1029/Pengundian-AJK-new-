@@ -1,33 +1,34 @@
 <?php
-// Memulakan fungsi session
 session_start();
 
-// Memanggil fail header dan sambungan database
 include("header.php");
 include("connection.php");
 include("kawalan-admin.php");
 
 
 // ===============================
-// Padam semua undian
+// PADAM SEMUA UNDIAN
 // ===============================
 if (isset($_POST['padam_semua'])) {
 
     $sql_padam = "DELETE FROM undian";
 
     if (mysqli_query($condb, $sql_padam)) {
+
         echo "<script>
-                alert('Semua undian telah dipadam!');
-                window.location.href='keputusan.php';
-              </script>";
+            alert('Semua undian telah dipadam!');
+            window.location.href='keputusan.php';
+        </script>";
+
     } else {
+
         echo "<script>alert('Ralat: ".mysqli_error($condb)."');</script>";
     }
 }
 
 
 // ===============================
-// Pemenang keseluruhan
+// PEMENANG KESELURUHAN
 // ===============================
 $query_pemenang = "
 SELECT c.id_calon, c.nama_calon, c.gambar,
@@ -40,11 +41,12 @@ LIMIT 1
 ";
 
 $result_pemenang = mysqli_query($condb, $query_pemenang);
+
 $pemenang_keseluruhan = mysqli_fetch_assoc($result_pemenang);
 
 
 // ===============================
-// Pemenang setiap jawatan
+// PEMENANG MENGIKUT JAWATAN
 // ===============================
 $query_jawatan = "
 SELECT j.idjawatan, j.nama_jawatan,
@@ -60,8 +62,6 @@ ORDER BY j.nama_jawatan, jumlah_undian DESC
 
 $result_jawatan = mysqli_query($condb, $query_jawatan);
 
-
-// Susun data pemenang ikut jawatan
 $pemenang_jawatan = [];
 
 while ($row = mysqli_fetch_assoc($result_jawatan)) {
@@ -70,141 +70,126 @@ while ($row = mysqli_fetch_assoc($result_jawatan)) {
 
     if (
         !isset($pemenang_jawatan[$jawatan]) ||
-        $row['jumlah_undian'] >
-        $pemenang_jawatan[$jawatan]['jumlah_undian']
+        $row['jumlah_undian'] > $pemenang_jawatan[$jawatan]['jumlah_undian']
     ) {
         $pemenang_jawatan[$jawatan] = $row;
     }
 }
 ?>
 
-<table width="100%" border="1">
+<link rel="stylesheet" href="style_keputusan.css">
 
-<tr>
-<td colspan="2" align="center">
-<h2>KEPUTUSAN UNDIAN</h2>
-</td>
-</tr>
+<div class="result-page">
 
-<!-- ===============================
-     Pemenang Keseluruhan
-================================ -->
-<tr>
-<td colspan="2" bgcolor="#eeeeee">
+    <div class="result-container">
 
-<h3>PEMENANG KESELURUHAN</h3>
+        <!-- HEADER -->
+        <div class="result-header">
 
-<?php if ($pemenang_keseluruhan): ?>
+            <h2>Keputusan Undian</h2>
 
-<table>
-<tr>
+            <p>Keputusan rasmi pilihan raya kadet bomba</p>
 
-<td>
-<img src="<?= $pemenang_keseluruhan['gambar'] ?>"
-alt="<?= $pemenang_keseluruhan['nama_calon'] ?>"
-width="120" height="150">
-</td>
+        </div>
 
-<td>
-<h3><?= $pemenang_keseluruhan['nama_calon'] ?></h3>
-<p><b>Jumlah Undian:</b>
-<?= $pemenang_keseluruhan['jumlah_undian'] ?></p>
-</td>
+        <!-- PEMENANG KESELURUHAN -->
+        <div class="card">
 
-</tr>
-</table>
+            <h3>Pemenang Keseluruhan</h3>
 
-<?php else: ?>
-<p>Tiada data pemenang keseluruhan.</p>
-<?php endif; ?>
+            <?php if ($pemenang_keseluruhan): ?>
 
-</td>
-</tr>
+                <div class="winner-box">
 
+                    <img 
+                        src="<?= $pemenang_keseluruhan['gambar'] ?>"
+                        alt="<?= $pemenang_keseluruhan['nama_calon'] ?>"
+                    >
 
-<!-- ===============================
-     Pemenang Mengikut Jawatan
-================================ -->
-<tr>
-<td colspan="2">
-<h3>PEMENANG MENGIKUT JAWATAN</h3>
-</td>
-</tr>
+                    <div class="winner-info">
 
-<tr>
-<td colspan="2">
+                        <h4><?= $pemenang_keseluruhan['nama_calon'] ?></h4>
 
-<table width="100%" border="1" cellpadding="5">
+                        <p>
+                            Undian: 
+                            <b><?= $pemenang_keseluruhan['jumlah_undian'] ?></b>
+                        </p>
 
-<?php foreach ($pemenang_jawatan as $jawatan => $pemenang): ?>
+                    </div>
 
-<tr>
+                </div>
 
-<td width="30%" bgcolor="#eeeeee">
-<h4>Jawatan: <?= $jawatan ?></h4>
-</td>
+            <?php else: ?>
 
-<td>
+                <p>Tiada data pemenang keseluruhan.</p>
 
-<table>
-<tr>
+            <?php endif; ?>
 
-<td>
-<img src="<?= $pemenang['gambar'] ?>"
-alt="<?= $pemenang['nama_calon'] ?>"
-width="80" height="100">
-</td>
+        </div>
 
-<td>
-<h4><?= $pemenang['nama_calon'] ?></h4>
-<p><b>Undian:</b>
-<?= $pemenang['jumlah_undian'] ?></p>
-</td>
+        <!-- PEMENANG JAWATAN -->
+        <div class="card">
 
-</tr>
-</table>
+            <h3>Pemenang Mengikut Jawatan</h3>
 
-</td>
-</tr>
+            <?php foreach ($pemenang_jawatan as $jawatan => $pemenang): ?>
 
-<?php endforeach; ?>
+                <div class="jawatan-box">
 
-</table>
+                    <div class="jawatan-title">
+                        <?= $jawatan ?>
+                    </div>
 
-</td>
-</tr>
+                    <div class="winner-row">
 
+                        <img 
+                            src="<?= $pemenang['gambar'] ?>"
+                            alt="<?= $pemenang['nama_calon'] ?>"
+                        >
 
-<!-- ===============================
-     Butang Admin
-================================ -->
-<?php if ($_SESSION['tahap'] == "ADMIN"): ?>
+                        <div>
 
-<tr>
-<td colspan="2" align="right">
+                            <h4><?= $pemenang['nama_calon'] ?></h4>
 
-<form method="POST"
-onsubmit="return confirm('Adakah anda pasti ingin memadam SEMUA undian? Tindakan ini tidak boleh dipulihkan.');">
+                            <p>
+                                Undian: 
+                                <b><?= $pemenang['jumlah_undian'] ?></b>
+                            </p>
 
-<button type="submit" name="padam_semua"
-style="background-color:#f44336;color:white;
-padding:8px 15px;border:none;cursor:pointer;">
-Padam Semua Undian
-</button>
+                        </div>
 
-</form>
+                    </div>
 
-</td>
-</tr>
+                </div>
 
-<button onclick="window.print()" class="print-btn"
-style="background-color:#2b07ff;color:white;
-padding:8px 40px;border:none;cursor:pointer;">
-Cetak Laporan
-</button>
+            <?php endforeach; ?>
 
-<?php endif; ?>
+        </div>
 
-</table>
+        <!-- ACTION -->
+        <?php if ($_SESSION['tahap'] == "ADMIN"): ?>
+
+            <div class="action-box">
+
+                <form method="POST"
+                onsubmit="return confirm('Padam SEMUA undian? Tindakan ini tidak boleh dipulihkan.');">
+
+                    <button type="submit" name="padam_semua" class="danger-btn">
+                        Padam Semua Undian
+                    </button>
+
+                </form>
+
+                <button onclick="window.print()" class="print-btn">
+                    Cetak Laporan
+                </button>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+</div>
 
 <?php include("footer.php"); ?>

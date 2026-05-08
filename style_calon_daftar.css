@@ -1,0 +1,173 @@
+/* =========================
+   GLOBAL
+========================= */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    /* CYBER NEON BACKGROUND */
+    background: radial-gradient(circle at top, #0b1020, #050814 60%, #02030a);
+    color: #e5e7eb;
+}
+
+/* =========================
+   PAGE
+========================= */
+.register-page{
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.register-container{
+
+    width: 100%;
+
+    max-width: 450px;
+
+    background: rgba(255,255,255,0.06);
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(99,102,241,0.25);
+
+    box-shadow:
+        0 0 25px rgba(99,102,241,0.25),
+        0 0 60px rgba(0,255,255,0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+/* =========================
+   HEADER
+========================= */
+.register-header{
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.register-header h2{
+
+    font-size: 32px;
+
+    color: #a5b4fc;
+
+    margin-bottom: 8px;
+
+    text-shadow: 0 0 12px rgba(99,102,241,0.6);
+}
+
+.register-header p{
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+/* =========================
+   INPUT
+========================= */
+.input-group{
+
+    margin-bottom: 20px;
+}
+
+.input-group label{
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+    color: #c7d2fe;
+}
+
+.input-group input[type="text"],
+.input-group input[type="file"]{
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid rgba(99,102,241,0.3);
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+
+    background: rgba(255,255,255,0.05);
+
+    color: #e5e7eb;
+}
+
+.input-group input:focus{
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 12px rgba(99,102,241,0.5),
+        0 0 25px rgba(0,255,255,0.15);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.submit-btn{
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow: 0 0 18px rgba(99,102,241,0.4);
+}
+
+.submit-btn:hover{
+
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 0 30px rgba(99,102,241,0.6);
+}

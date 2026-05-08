@@ -1,0 +1,325 @@
+/* =========================
+   GLOBAL (CYBER NEON VOTE)
+========================= */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(99,102,241,0.25),
+    transparent 55%),
+    radial-gradient(circle at bottom right,
+    rgba(34,211,238,0.18),
+    transparent 55%),
+    linear-gradient(135deg,
+    #050816,
+    #0b1020,
+    #020617);
+
+    color: #e2e8f0;
+}
+
+/* =========================
+   PAGE
+========================= */
+.vote-page{
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 30px 18px;
+}
+
+/* =========================
+   CONTAINER (GLASS DASHBOARD)
+========================= */
+.vote-container{
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 28px;
+
+    border-radius: 22px;
+
+    background: rgba(255,255,255,0.06);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    border: 1px solid rgba(255,255,255,0.14);
+
+    box-shadow:
+    0 12px 40px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 0 40px rgba(99,102,241,0.12);
+}
+
+/* =========================
+   HEADER
+========================= */
+.vote-header{
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.vote-header h2{
+
+    font-size: 30px;
+
+    color: #a78bfa;
+
+    text-shadow: 0 0 12px rgba(167,139,250,0.35);
+}
+
+.vote-header p{
+
+    font-size: 14px;
+
+    color: #94a3b8;
+}
+
+/* =========================
+   GRID (AI DASHBOARD STYLE)
+========================= */
+.candidate-grid{
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 20px;
+}
+
+/* =========================
+   CARD (NEON GLASS)
+========================= */
+.candidate-card{
+
+    background: rgba(255,255,255,0.05);
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    border: 1px solid rgba(148,163,184,0.25);
+
+    transition: 0.25s;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.candidate-card:hover{
+
+    transform: translateY(-6px);
+
+    border-color: #22d3ee;
+
+    box-shadow:
+    0 0 20px rgba(34,211,238,0.15),
+    0 0 35px rgba(99,102,241,0.15);
+}
+
+/* =========================
+   IMAGE
+========================= */
+.candidate-img{
+
+    width: 120px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    border: 2px solid rgba(167,139,250,0.6);
+
+    margin-bottom: 12px;
+
+    box-shadow: 0 0 18px rgba(99,102,241,0.25);
+}
+
+/* =========================
+   NAME
+========================= */
+.candidate-name{
+
+    font-size: 18px;
+
+    color: #e2e8f0;
+
+    margin-bottom: 16px;
+}
+
+/* =========================
+   JAWATAN LIST
+========================= */
+.jawatan-list{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    text-align: left;
+}
+
+/* =========================
+   OPTION (GLASS RADIO STYLE)
+========================= */
+.jawatan-option{
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid rgba(148,163,184,0.2);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.jawatan-option:hover{
+
+    background: rgba(34,211,238,0.08);
+
+    border-color: #22d3ee;
+}
+
+.jawatan-option input{
+
+    margin-right: 10px;
+
+    transform: scale(1.1);
+
+    accent-color: #22d3ee;
+}
+
+.jawatan-option span{
+
+    font-weight: 500;
+
+    color: #cbd5e1;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.submit-section{
+
+    text-align: center;
+
+    margin-top: 30px;
+}
+
+.submit-btn{
+
+    padding: 12px 34px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: white;
+
+    background: linear-gradient(135deg,#6366f1,#22d3ee);
+
+    box-shadow: 0 0 20px rgba(99,102,241,0.25);
+
+    transition: 0.2s;
+}
+
+.submit-btn:hover{
+
+    transform: translateY(-3px);
+
+    box-shadow:
+    0 0 25px rgba(34,211,238,0.35),
+    0 0 45px rgba(99,102,241,0.25);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media screen and (max-width: 768px){
+
+    .vote-header h2{
+        font-size: 24px;
+    }
+
+    .candidate-card{
+        padding: 15px;
+    }
+
+    .candidate-img{
+        width: 110px;
+        height: 135px;
+    }
+}
+/* =========================
+   SELECTED STATE (NEON ACTIVE)
+   用:checked + label 实现
+========================= */
+
+/* 如果 input 在 label 内（你现在结构就是这样） */
+.jawatan-option input:checked + span{
+
+    color: #22d3ee;
+
+    font-weight: 700;
+
+    text-shadow:
+    0 0 10px rgba(34,211,238,0.6),
+    0 0 20px rgba(99,102,241,0.4);
+}
+
+/* 选中整个 option 发光（关键） */
+.jawatan-option:has(input:checked){
+
+    border-color: #22d3ee;
+
+    background: rgba(34,211,238,0.10);
+
+    box-shadow:
+    0 0 15px rgba(34,211,238,0.25),
+    0 0 30px rgba(99,102,241,0.18);
+
+    transform: scale(1.02);
+}
+
+/* radio/checkbox 本身强化 */
+.jawatan-option input:checked{
+
+    accent-color: #22d3ee;
+
+    transform: scale(1.2);
+}

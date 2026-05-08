@@ -1,70 +1,166 @@
 <?php
+
 # Memulakan sesi
 session_start();
+
 error_reporting(0);
 
 # Memanggil fail header.php, connection.php, dan kawalan-admin.php
 include('header.php');
 include('connection.php');
 include('kawalan-admin.php');
+
 ?>
 
-<h3 align='center'>Senarai Calon</h3>
+<link rel="stylesheet" href="style_senarai_calon.css">
 
-<!-- Header bagi jadual untuk memaparkan senarai calon -->
-<table align='center' width='70%' border='1' id='saiz'>
-    <tr bgcolor=#FFCBC4>
-        <td colspan='2' align='right'>
-            <form action='' method='POST' style='margin:0; padding:0;'>
-                <input type='text' name='nama_calon' placeholder='Carian calon'>
-                <input type='submit' value='Cari'>
+<div class="candidate-page">
+
+    <div class="candidate-container">
+
+        <!-- HEADER -->
+        <div class="page-header">
+
+            <h2>Senarai Calon</h2>
+
+            <p>
+                Pengurusan Maklumat Calon Kadet Bomba
+            </p>
+
+        </div>
+
+        <!-- TOP BAR -->
+        <div class="top-bar">
+
+            <!-- SEARCH -->
+            <form action="" method="POST" class="search-form">
+
+                <input 
+                    type="text"
+                    name="nama_calon"
+                    placeholder="Carian calon..."
+                >
+
+                <input 
+                    type="submit"
+                    value="Cari"
+                    class="search-btn"
+                >
+
             </form>
-        </td>
-        <td colspan='5' align='right'>
-            | <a href='calon-daftar.php'>Daftar Calon Baru</a> |
-            <!-- Memanggil fail butang-saiz bagi membolehkan pengguna mengubah saiz tulisan -->
-            <?php include('butang-saiz.php'); ?>
-        </td>
-    </tr>
-    <tr bgcolor=#FC9483 align='center'>
-        <td>ID Calon</td>
-        <td>Nama Calon</td>
-        <td>Gambar</td>
-        <td>Tindakan</td>
-    </tr>
+
+            <!-- ACTION -->
+            <div class="top-action">
+
+                <a href="calon-daftar.php" class="add-btn">
+                    + Daftar Calon Baru
+                </a>
+
+                <div class="font-size-box">
+
+                    <?php include('butang-saiz.php'); ?>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-wrapper">
+
+            <table class="candidate-table">
+
+                <tr>
+
+                    <th>ID Calon</th>
+
+                    <th>Nama Calon</th>
+
+                    <th>Gambar</th>
+
+                    <th>Tindakan</th>
+
+                </tr>
 
 <?php
 
-# Syarat tambahan yang akan dimasukkan dalam arahan(query) senarai calon
+# Syarat tambahan
 $tambahan = "";
+
 if(!empty($_POST['nama_calon'])) {
-    $tambahan = "WHERE nama_calon LIKE '%".$_POST['nama_calon']."%'";
+
+    $tambahan =
+    "WHERE nama_calon LIKE '%".$_POST['nama_calon']."%'";
 }
 
-# Arahan query untuk mencari calon
+# Arahan query
 $arahan_papar = "SELECT * FROM calon $tambahan";
 
-# Laksanakan arahan mencari data calon
+# Laksanakan query
 $laksana = mysqli_query($condb, $arahan_papar);
 
-# Mengambil data yang ditemui
-while($row= mysqli_fetch_array($laksana)) {
-    # Memaparkan senarai calon dalam jadual
-    echo "<tr>
-        <td>{$row['id_calon']}</td>
-        <td>{$row['nama_calon']}</td>
-        <td class='gambar-cell'><img src='{$row['gambar']}' alt='{$row['nama_calon']}'
-         style='max-width: 100px; height: auto; '></td>
-        <td align='right'>
+# Paparkan data
+while($row = mysqli_fetch_array($laksana)) {
 
-            | <a href='calon-padam.php?id_calon=".$row['id_calon']."' 
-             onClick=\"return confirm('Anda pasti anda ingin memadam data ini?')\">Hapus</a> |
-            | <a href='calon-kemaskini-borang.php?id_calon=".$row['id_calon']."'>Kemaskini</a> |
+    echo "
+
+    <tr>
+
+        <td>
+            ".$row['id_calon']."
+        </td>
+
+        <td class='candidate-name'>
+            ".$row['nama_calon']."
+        </td>
+
+        <td>
+
+            <img 
+                src='".$row['gambar']."'
+                alt='".$row['nama_calon']."'
+                class='candidate-img'
+            >
 
         </td>
-    </tr>";
+
+        <td>
+
+            <div class='action-buttons'>
+
+                <a 
+                    href='calon-kemaskini-borang.php?id_calon=".$row['id_calon']."'
+                    class='edit-btn'
+                >
+                    Kemaskini
+                </a>
+
+                <a 
+                    href='calon-padam.php?id_calon=".$row['id_calon']."'
+                    class='delete-btn'
+                    onClick=\"return confirm('Anda pasti anda ingin memadam data ini?')\"
+                >
+                    Hapus
+                </a>
+
+            </div>
+
+        </td>
+
+    </tr>
+
+    ";
 }
 
 ?>
-</table>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
 <?php include('footer.php'); ?>

@@ -7,75 +7,75 @@ include('header.php');
 include('kawalan-admin.php');
 ?>
 
-<h3>Muat Naik Data Pengguna (*.txt)</h3>
+<link rel="stylesheet" href="style_upload.css">
 
-<form action='' method='POST' enctype='multipart/form-data'>
-    <h3><b>Sila Pilih Fail txt yang ingin diupload</b></h3>
-    <input type='file' name='data_admin'>
-    <button type='submit' name='btn-upload'>Muat Naik</button>
-</form>
+<div class="upload-page">
 
-<?php include ('footer.php'); ?>
+    <div class="upload-container">
 
-<?PHP
+        <h3>Muat Naik Data Pengguna (*.txt)</h3>
+
+        <form action='' method='POST' enctype='multipart/form-data'>
+
+            <div class="input-box">
+                <label>Sila Pilih Fail txt yang ingin diupload</label>
+                <input type='file' name='data_admin'>
+            </div>
+
+            <button type='submit' name='btn-upload'>Muat Naik</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<?php include('footer.php'); ?>
+
+<?php
 # data validation : menyemak kewujudan data dari borang
 if (isset($_POST['btn-upload']))
 {
-    # memanggil fail connection
     include ('connection.php');
 
-    # mengambil nama sementara fail
     $namafailsementara=$_FILES["data_admin"]["tmp_name"];
-
-    # mengambil nama fail
     $namafail=$_FILES['data_admin']['name'];
-
-    # mengambil jenis fail
     $jenisfail=pathinfo($namafail, PATHINFO_EXTENSION);
 
-    # menguji jenis fail dan saiz fail
     if($_FILES["data_admin"]["size"]>0 AND $jenisfail=="txt")
     {
-        # membuka fail yang diambil
         $fail_data_admin=fopen($namafailsementara,"r");
+
         $success = true;
         $total_data = 0;
         $data_berjaya = 0;
 
-        # mendapatkan data dari fail baris demi baris
         while (!feof($fail_data_admin))
         {
-            # mengambil data sebaris sahaja bg setiap pusingan
             $ambilbarisdata = trim(fgets($fail_data_admin));
 
             if(empty($ambilbarisdata)) continue;
 
             $total_data++;
 
-            # memecahkan baris data mengikut tanda pipe
             $pecahkanbaris = explode("|", $ambilbarisdata);
 
-            # pastikan ada cukup data (sekurang-kurangnya 4 elemen)
             if(count($pecahkanbaris) < 4) {
                 $success = false;
                 continue;
             }
 
-            # selepas pecahan tadi akan diumpukan kepada 4
             list($nama, $nokp, $katalaluan, $tahap) = $pecahkanbaris;
 
-            # bersihkan data
             $nama = trim($nama);
             $nokp = trim($nokp);
             $katalaluan = trim($katalaluan);
             $tahap = trim($tahap);
 
-            # arahan SQL untuk menyimpan data
             $arahan_sql_simpan = "INSERT INTO pengguna 
             (nama, nokp, katalaluan, tahap) VALUES 
             ('$nama', '$nokp', '$katalaluan', '$tahap')";
 
-            # memasukkan data kedalam jadual pengguna
             $laksana_arahan_simpan=mysqli_query($condb, $arahan_sql_simpan);
 
             if($laksana_arahan_simpan) {
@@ -85,7 +85,6 @@ if (isset($_POST['btn-upload']))
             }
         }
 
-        # menutup fail txt yang dibuka
         fclose($fail_data_admin);
 
         if($success) {
@@ -98,7 +97,6 @@ if (isset($_POST['btn-upload']))
     }
     else
     {
-        # jika fail yang dimuat naik kosong atau tersalah format.
         echo "<script>alert('Hanya fail berformat txt sahaja dibenarkan');</script>";
     }
 }
